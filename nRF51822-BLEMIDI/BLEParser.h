@@ -1,4 +1,7 @@
 /*
+ *  This file was mainly taken from
+ *  https://github.com/sieren/blidino/blob/5dce60e8fe093a8b4b1d407d864c8ee57a69c587/nRF51822-BLEMIDI/BLEParser.h
+ *
  *  Copyright (c) 2014 Matthias Frick
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -412,7 +415,7 @@ namespace midi
 
       }
     }
-    void setUSBMidiHandle(Receiver *MidiHdl)
+    void setReceiver(Receiver *MidiHdl)
     {
       midiRecv = MidiHdl;
     }
@@ -491,7 +494,7 @@ namespace midi
 
     void sendMidi(uint8_t size)
     {
-      midiRecv->SendData(midiBuffer, 0);
+      midiRecv->SendData(midiBuffer, size, 0);
     }
 
     uint8_t midiBuffer[3];
